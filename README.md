@@ -1,5 +1,5 @@
 # benetech-making-graphs-accessible
-This is my code for training a two-stage system (YOLOv7 Object detector+ OCR model) for the "[Benetech - Making Graphs Accessible](https://www.kaggle.com/competitions/benetech-making-graphs-accessible/overview "Benetech - Making Graphs Accessible")" kaggle competition. I got 20th place in the competition.
+This is my code for training a two-stage system ([YOLOv7](https://github.com/WongKinYiu/yolov7) Object detector+ [OCR model](https://github.com/JaidedAI/EasyOCR)) for the "[Benetech - Making Graphs Accessible](https://www.kaggle.com/competitions/benetech-making-graphs-accessible/overview "Benetech - Making Graphs Accessible")" kaggle competition. I got 20th place in the competition.
 
 # Using ML to create tabular data from graphs
 My approach to the problem involves two main steps: object detection and Optical Character Recognition(OCR)
@@ -19,6 +19,7 @@ Using the EasyOCR libary, I trained a ResNet(feature extractor)+BidirectionalLST
 
 #### Post processing:
 After receiving the bounding boxes from the model, I performed some post-processing based on some simple heuristics like: removing the data points that lie outside the chart bbox, restricting x-labels to lie under the chart bbox, and restricting y-labels to the left side of the chart bbox. 
+Also, the x/y axis tick coordinates are calculated using the x/y-axis bbox, and the chart bbox. I use the nearest point that lies on the chart bbox from the center of the x/y axis as the respective x/y tick coordinate. I chose this because the precision and recall of the x/y labels was higher than the x/y axis ticks in an older version of the model. 
 
 
 I participated in this competition only for the last 4 weeks. So, due to lack of time, I wasnt able to try out other approaches like Donut . I think there is a lot of room for improvement for this model. For example,about 25% of the predictions made by the model automatically get scored 0, because of mismatching number of predictions. This mismatch is due to only 1 or 2 points for charts besides scatter plot.
