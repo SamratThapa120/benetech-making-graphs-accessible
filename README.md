@@ -18,8 +18,8 @@ Some notes:
 Using the EasyOCR libary, I trained a ResNet(feature extractor)+BidirectionalLSTM model with Connectionist Temporal Classification(CTC) loss. The additional  dataset improved the accuracy of the OCR model by about 5% from 84% to 89%.
 
 #### Post processing:
-After receiving the bounding boxes from the model, I performed some post-processing based on some simple heuristics like: removing the data points that lie outside the chart bbox, restricting x-labels to lie under the chart bbox, and restricting y-labels to the left side of the chart bbox. 
-Also, the x/y axis tick coordinates are calculated using the x/y-axis bbox, and the chart bbox. I use the nearest point that lies on the chart bbox from the center of the x/y axis as the respective x/y tick coordinate. I chose this because the precision and recall of the x/y labels was higher than the x/y axis ticks in an older version of the model. 
+After receiving the bounding boxes from the model, I performed some post-processing based on some simple heuristics like: removing the data points that lie outside the chart bbox, restricting x-labels(y-labels for horizontal-bar) to lie under the chart bbox, and restricting y-labels(x-labels for horizontal-bar) to the left side of the chart bbox. 
+Also, the x/y axis tick coordinates are calculated using the x/y-axis bbox, and the chart bbox. I use the nearest point that lies on the chart bbox from the center of the x/y label bbox as the respective x/y tick coordinate. I chose this approach because the precision and recall of the x/y labels was higher than the x/y axis ticks in an older version of the model. 
 
 
 I participated in this competition only for the last 4 weeks. So, due to lack of time, I wasnt able to try out other approaches like Donut . I think there is a lot of room for improvement for this model. For example,about 25% of the predictions made by the model automatically get scored 0, because of mismatching number of predictions. This mismatch is due to only 1 or 2 points for charts besides scatter plot.
