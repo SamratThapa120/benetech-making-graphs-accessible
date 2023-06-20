@@ -4,7 +4,7 @@ This is my code for training a two-stage system ([YOLOv7](https://github.com/Won
 # Using ML to create tabular data from graphs
 My approach to the problem involves two main steps: object detection and Optical Character Recognition(OCR)
 <img width="1026" alt="image" src="https://github.com/SamratThapa120/benetech-making-graphs-accessible/assets/38401989/f349dd62-6dbb-4792-8654-65d870c1b6f1">
-#### Object Detection(Yolov7):
+#### Object Detection(Yolov7-X):
 I trained a yolov7 model to detect the x-axis labels, y-axis labels, the chart bounding box, and the data points on the chart. The coordinates of the data-points were not provided in the dataset. I was able to accurately compute the position of the datapoints on the chart images by linear interpolation of the x-axis and y-axis tick coordinates with respect to the x-axis/y-axis labels (values). During inference, I inverted this process by calulating the data-series from the linear interpolation of the values of x-axis and y-axis labels with respect to the co-ordinates of the data points
 
 This approach also works relatively well for scatter plots, compared to other approaches like Donut.
