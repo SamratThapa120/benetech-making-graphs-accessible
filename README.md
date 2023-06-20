@@ -3,7 +3,8 @@ This is my code for training a two-stage system ([YOLOv7](https://github.com/Won
 
 # Using ML to create tabular data from graphs
 My approach to the problem involves two main steps: object detection and Optical Character Recognition(OCR)
-<img width="1026" alt="image" src="https://github.com/SamratThapa120/benetech-making-graphs-accessible/assets/38401989/f349dd62-6dbb-4792-8654-65d870c1b6f1">
+<img width="1026" alt="247040237-f349dd62-6dbb-4792-8654-65d870c1b6f1" src="https://github.com/SamratThapa120/benetech-making-graphs-accessible/assets/38401989/3059b8fa-b33b-4c82-9ea3-4f8ac7de0838">
+
 #### Object Detection(Yolov7-X):
 I trained a yolov7 model to detect the x-axis labels, y-axis labels, the chart bounding box, and the data points on the chart. The coordinates of the data-points were not provided in the dataset. I was able to accurately compute the position of the datapoints on the chart images by linear interpolation of the x-axis and y-axis tick coordinates with respect to the x-axis/y-axis labels (values). During inference, I inverted this process by calulating the data-series from the linear interpolation of the values of x-axis and y-axis labels with respect to the co-ordinates of the data points
 
@@ -12,7 +13,8 @@ This approach also works relatively well for scatter plots, compared to other ap
 Some notes:
 - This object detection model was also used as the chart-type classification model.
 - There are overlapping bounxing boxes for some x-axis labels like the image below. However, my OCR model was able to extract the correct text despite the input image including text from neighbour bboxes. 
-<img width="849" alt="image" src="https://github.com/SamratThapa120/benetech-making-graphs-accessible/assets/38401989/1ab49a89-1db7-48a1-9b3e-429217142b45">
+<img width="849" alt="247041714-1ab49a89-1db7-48a1-9b3e-429217142b45" src="https://github.com/SamratThapa120/benetech-making-graphs-accessible/assets/38401989/25f90d90-2643-4e60-b6fd-4eb21b5cb16c">
+
 
 #### OCR model:
 Using the EasyOCR libary, I trained a ResNet(feature extractor)+BidirectionalLSTM model with Connectionist Temporal Classification(CTC) loss. The additional  dataset improved the accuracy of the OCR model by about 5% from 84% to 89%.
