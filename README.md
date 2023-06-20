@@ -53,9 +53,10 @@ cd OCR
 bash train.sh
 ```
 # Model-checkpoints
-The checkpoints of the model that I trained are listed in the following directories:s
+The checkpoints of the model that I trained are listed in the following directories:
+
 yolov7:
-`    yolov7/runs/train/yolov7-custom-sgd`
+`yolov7/runs/train/yolov7-custom-sgd`
 
 OCR:
-`    OCR/saved_models/en_filtered_old`
+`OCR/saved_models/en_filtered_old`
